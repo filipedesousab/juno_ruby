@@ -1,0 +1,24 @@
+version: "3.3"
+
+services:
+  ruby:
+    build:
+      context: .
+      args:
+        USER_ID: ${USER_ID:-1000}
+        GROUP_ID: ${GROUP_ID:-1000}
+    image: juno_ruby
+    command: bash -c "while true; do echo > /dev/null; done"
+    env_file:
+      - .env
+    user: ${CURRENT_UID:-1000:1000}
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./:/juno_ruby
+      - bundle:/usr/local/bundle
+      - gems:/usr/local/lib/ruby/gems/3.0.0
+    working_dir: /juno_ruby
+
+volumes:
+  bundle:
+  gems:
