@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "juno_ruby"
+require_relative "./configure_juno_ruby"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
