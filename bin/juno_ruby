@@ -1,0 +1,82 @@
+#!/bin/bash
+
+juno_ruby() {
+    __check_unused_containers
+
+    case $1 in
+        build)
+            __docker_compose_juno_ruby build
+            ;;
+        install)
+            __exec_command_juno_ruby ruby ./bin/setup
+            ;;
+        up)
+            __docker_compose_juno_ruby up -d --force-recreate ruby
+            ;;
+        down)
+            __docker_compose_juno_ruby down
+            ;;
+        ps)
+            __docker_compose_juno_ruby ps
+            ;;
+        bash)
+            __exec_command_juno_ruby ruby bash
+            ;;
+        console)
+            __exec_command_juno_ruby ruby ./bin/console
+            ;;
+        test)
+            args=($@)
+            files=(${args[@]:1})
+            __exec_command_juno_ruby ruby bundle exec rspec $files
+            ;;
+        rubocop)
+            args=($@)
+            files=(${args[@]:1})
+            __exec_command_juno_ruby ruby bundle exec rubocop $files
+            ;;
+        run)
+            command=($(echo $@ | sed "s/run//"))
+
+            __docker_compose_juno_ruby run ruby $command
+            ;;
+        cd)
+            cd $JUNO_RUBY_PATH
+            ;;
+        *)
+            command=$@
+            if [ -z "$command" ]; then
+                cd $JUNO_RUBY_PATH
+            else
+                __exec_command_juno_ruby ruby $@
+            fi
+            ;;
+    esac
+}
+
+__docker_compose_juno_ruby() {
+    if (command -v docker &> /dev/null) && (command -v docker-compose &> /dev/null); then
+        docker-compose -f $JUNO_RUBY_PATH/docker-compose.yml $@
+    else
+        echo '\033[1;31m'The docker or docker-compose is not installed.;
+    fi
+}
+
+__exec_command_juno_ruby() {
+    args=($@)
+    service=${args[@]:0:1}
+    command=(${args[@]:1})
+
+    if (__docker_compose_juno_ruby ps $service | grep $service"_1" | grep Up &> /dev/null); then
+        __docker_compose_juno_ruby exec $service $command
+    else
+        __docker_compose_juno_ruby run $service $command
+    fi
+}
+
+__check_unused_containers() {
+    if (__docker_compose_juno_ruby ps -a | grep juno_ruby | grep Exit &> /dev/null) ; then
+        echo '\033[0;33m'There are unused containers.
+        echo Run '\033[0m\033[3m'docker container prune'\033[0;33m' to clean.'\033[0m'
+    fi
+}
