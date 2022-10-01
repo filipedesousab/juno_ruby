@@ -1,4 +1,4 @@
-FROM ruby
+FROM ruby:2
 
 ARG USER_ID
 ARG GROUP_ID
