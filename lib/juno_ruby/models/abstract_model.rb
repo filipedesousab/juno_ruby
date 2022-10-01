@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'json'
+
+require "json"
 
 module JunoRuby
   class AbstractModel
@@ -11,7 +12,7 @@ module JunoRuby
       raise JunoRuby::Errors::TypeError, msg unless types.include?(val.class)
     end
 
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     def select(*req_attrs)
       hash_attrs = {}
       selected_attributes = []
@@ -30,25 +31,31 @@ module JunoRuby
 
       selected_attributes.each do |attr|
         instance_var = instance_variable_get(:"@#{attr}")
-        value = hash_attrs.include?(attr) ? instance_var.select(*hash_attrs[attr]) : instance_var
+        value = if hash_attrs.include?(attr)
+                  if instance_var.is_a?(Array)
+                    instance_var.map { |item| item.select(*hash_attrs[attr]) }
+                  else
+                    instance_var.select(*hash_attrs[attr])
+                  end
+                else
+                  instance_var
+                end
 
         model.instance_variable_set(:"@#{attr}", value)
       end
 
       model
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
-    def to_json(*args)
+    def to_json(*_args)
       attrs = instance_variables.map { |var| var[1..-1].to_sym }
 
       hash = attrs.each_with_object({}) do |attr, acc|
         value = send(attr)
         json_attr = convert_attr_to_json attr
 
-        unless value.nil?
-          acc[json_attr] = value
-        end
+        acc[json_attr] = value unless value.nil?
 
         acc
       end
