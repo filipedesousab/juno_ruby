@@ -9,7 +9,7 @@ gem "byebug"
 
 gem "factory_bot"
 
-gem 'faker', '~> 1.6', '>= 1.6.6'
+gem "faker", "~> 1.6", ">= 1.6.6"
 
 gem "rake", "~> 13.0"
 
