@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "juno_ruby"
+require "byebug"
 require "factory_bot"
 require "faker"
 require_relative "./configure_juno_ruby"
