@@ -4,7 +4,7 @@ RSpec.describe "JunoRuby Split" do
   it "must accept only string in recipient_token" do
     split = JunoRuby::Split.new
 
-    split.recipient_token = "string"
+    split.recipient_token = Faker::Lorem.word
 
     expect { split.recipient_token = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -15,7 +15,7 @@ RSpec.describe "JunoRuby Split" do
     split.amount = 10
     split.amount = 0.01
 
-    expect { split.amount = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.amount = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only integer and float in percentage" do
@@ -24,7 +24,7 @@ RSpec.describe "JunoRuby Split" do
     split.percentage = 10
     split.percentage = 0.01
 
-    expect { split.percentage = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.percentage = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only boolean in amount_remainder" do
@@ -33,7 +33,7 @@ RSpec.describe "JunoRuby Split" do
     split.amount_remainder = true
     split.amount_remainder = false
 
-    expect { split.amount_remainder = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.amount_remainder = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only boolean in charge_fee" do
@@ -42,7 +42,7 @@ RSpec.describe "JunoRuby Split" do
     split.charge_fee = true
     split.charge_fee = false
 
-    expect { split.charge_fee = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.charge_fee = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must convert to json" do

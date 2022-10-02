@@ -4,7 +4,7 @@ RSpec.describe "JunoRuby Billing" do
   it "must accept only string in name" do
     billing = JunoRuby::Billing.new
 
-    billing.name = "string"
+    billing.name = Faker::Lorem.word
 
     expect { billing.name = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -12,7 +12,7 @@ RSpec.describe "JunoRuby Billing" do
   it "must accept only string in document" do
     billing = JunoRuby::Billing.new
 
-    billing.document = "string"
+    billing.document = Faker::Lorem.word
 
     expect { billing.document = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -20,7 +20,7 @@ RSpec.describe "JunoRuby Billing" do
   it "must accept only string in email" do
     billing = JunoRuby::Billing.new
 
-    billing.email = "string"
+    billing.email = Faker::Lorem.word
 
     expect { billing.email = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -37,7 +37,7 @@ RSpec.describe "JunoRuby Billing" do
   it "must accept only string in secondary_email" do
     billing = JunoRuby::Billing.new
 
-    billing.secondary_email = "string"
+    billing.secondary_email = Faker::Lorem.word
 
     expect { billing.secondary_email = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -45,7 +45,7 @@ RSpec.describe "JunoRuby Billing" do
   it "must accept only string in phone" do
     billing = JunoRuby::Billing.new
 
-    billing.phone = "string"
+    billing.phone = Faker::Lorem.word
 
     expect { billing.phone = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -53,7 +53,7 @@ RSpec.describe "JunoRuby Billing" do
   it "must accept only string in birth_date" do
     billing = JunoRuby::Billing.new
 
-    billing.birth_date = "string"
+    billing.birth_date = Faker::Lorem.word
 
     expect { billing.birth_date = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end

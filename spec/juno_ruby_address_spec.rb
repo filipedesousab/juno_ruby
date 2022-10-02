@@ -4,7 +4,7 @@ RSpec.describe "JunoRuby Address" do
   it "must accept only string in street" do
     address = JunoRuby::Address.new
 
-    address.street = "string"
+    address.street = Faker::Lorem.word
 
     expect { address.street = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -12,7 +12,7 @@ RSpec.describe "JunoRuby Address" do
   it "must accept only string in number" do
     address = JunoRuby::Address.new
 
-    address.number = "string"
+    address.number = Faker::Lorem.word
 
     expect { address.number = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -20,7 +20,7 @@ RSpec.describe "JunoRuby Address" do
   it "must accept only string in complement" do
     address = JunoRuby::Address.new
 
-    address.complement = "string"
+    address.complement = Faker::Lorem.word
 
     expect { address.complement = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -28,7 +28,7 @@ RSpec.describe "JunoRuby Address" do
   it "must accept only string in neighborhood" do
     address = JunoRuby::Address.new
 
-    address.neighborhood = "string"
+    address.neighborhood = Faker::Lorem.word
 
     expect { address.neighborhood = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -36,7 +36,7 @@ RSpec.describe "JunoRuby Address" do
   it "must accept only string in city" do
     address = JunoRuby::Address.new
 
-    address.city = "string"
+    address.city = Faker::Lorem.word
 
     expect { address.city = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -44,7 +44,7 @@ RSpec.describe "JunoRuby Address" do
   it "must accept only string in state" do
     address = JunoRuby::Address.new
 
-    address.state = "string"
+    address.state = Faker::Lorem.word
 
     expect { address.state = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -52,7 +52,7 @@ RSpec.describe "JunoRuby Address" do
   it "must accept only string in post_code" do
     address = JunoRuby::Address.new
 
-    address.post_code = "string"
+    address.post_code = Faker::Lorem.word
 
     expect { address.post_code = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end

@@ -4,7 +4,7 @@ RSpec.describe "JunoRuby Charge" do
   it "must accept only string in pix_key" do
     split = JunoRuby::Charge.new
 
-    split.pix_key = "string"
+    split.pix_key = Faker::Lorem.word
 
     expect { split.pix_key = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -15,13 +15,13 @@ RSpec.describe "JunoRuby Charge" do
     split.pix_include_image = true
     split.pix_include_image = false
 
-    expect { split.pix_include_image = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.pix_include_image = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in description" do
     split = JunoRuby::Charge.new
 
-    split.description = "string"
+    split.description = Faker::Lorem.word
 
     expect { split.description = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -29,9 +29,9 @@ RSpec.describe "JunoRuby Charge" do
   it "must accept only array in references" do
     split = JunoRuby::Charge.new
 
-    split.references = ["string"]
+    split.references = [Faker::Lorem.word]
 
-    expect { split.references = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.references = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only integer and float in total_amount" do
@@ -40,7 +40,7 @@ RSpec.describe "JunoRuby Charge" do
     split.total_amount = 10
     split.total_amount = 0.01
 
-    expect { split.total_amount = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.total_amount = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only integer and float in amount" do
@@ -49,13 +49,13 @@ RSpec.describe "JunoRuby Charge" do
     split.amount = 10
     split.amount = 0.01
 
-    expect { split.amount = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.amount = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in due_date" do
     split = JunoRuby::Charge.new
 
-    split.due_date = "string"
+    split.due_date = Faker::Lorem.word
 
     expect { split.due_date = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -82,7 +82,7 @@ RSpec.describe "JunoRuby Charge" do
     split.fine = 10
     split.fine = 0.01
 
-    expect { split.fine = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.fine = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only integer and float in interest" do
@@ -91,7 +91,7 @@ RSpec.describe "JunoRuby Charge" do
     split.interest = 10
     split.interest = 0.01
 
-    expect { split.interest = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.interest = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only integer and float in discount_amount" do
@@ -100,7 +100,7 @@ RSpec.describe "JunoRuby Charge" do
     split.discount_amount = 10
     split.discount_amount = 0.01
 
-    expect { split.discount_amount = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.discount_amount = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only integer in discount_days" do
@@ -114,9 +114,9 @@ RSpec.describe "JunoRuby Charge" do
   it "must accept only array in payment_types" do
     split = JunoRuby::Charge.new
 
-    split.payment_types = ["string"]
+    split.payment_types = [Faker::Lorem.word]
 
-    expect { split.payment_types = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.payment_types = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only boolean in payment_advance" do
@@ -125,13 +125,13 @@ RSpec.describe "JunoRuby Charge" do
     split.payment_advance = true
     split.payment_advance = false
 
-    expect { split.payment_advance = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.payment_advance = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in fee_schema_token" do
     split = JunoRuby::Charge.new
 
-    split.fee_schema_token = "string"
+    split.fee_schema_token = Faker::Lorem.word
 
     expect { split.fee_schema_token = 10 }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -139,9 +139,9 @@ RSpec.describe "JunoRuby Charge" do
   it "must accept only array in split" do
     split = JunoRuby::Charge.new
 
-    split.split = ["string"]
+    split.split = [Faker::Lorem.word]
 
-    expect { split.split = "string" }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.split = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must convert to json" do
