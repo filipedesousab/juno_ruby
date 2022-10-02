@@ -6,7 +6,7 @@ RSpec.describe "JunoRuby Address" do
 
     address.street = Faker::Lorem.word
 
-    expect { address.street = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { address.street = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in number" do
@@ -14,7 +14,7 @@ RSpec.describe "JunoRuby Address" do
 
     address.number = Faker::Lorem.word
 
-    expect { address.number = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { address.number = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in complement" do
@@ -22,7 +22,7 @@ RSpec.describe "JunoRuby Address" do
 
     address.complement = Faker::Lorem.word
 
-    expect { address.complement = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { address.complement = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in neighborhood" do
@@ -30,7 +30,7 @@ RSpec.describe "JunoRuby Address" do
 
     address.neighborhood = Faker::Lorem.word
 
-    expect { address.neighborhood = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { address.neighborhood = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in city" do
@@ -38,7 +38,7 @@ RSpec.describe "JunoRuby Address" do
 
     address.city = Faker::Lorem.word
 
-    expect { address.city = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { address.city = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in state" do
@@ -46,7 +46,7 @@ RSpec.describe "JunoRuby Address" do
 
     address.state = Faker::Lorem.word
 
-    expect { address.state = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { address.state = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in post_code" do
@@ -54,7 +54,7 @@ RSpec.describe "JunoRuby Address" do
 
     address.post_code = Faker::Lorem.word
 
-    expect { address.post_code = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { address.post_code = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must convert to json" do

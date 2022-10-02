@@ -6,7 +6,7 @@ RSpec.describe "JunoRuby PixResponse" do
 
     pix_response.id = Faker::Lorem.word
 
-    expect { pix_response.id = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { pix_response.id = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in payload_in_base64" do
@@ -14,7 +14,7 @@ RSpec.describe "JunoRuby PixResponse" do
 
     pix_response.payload_in_base64 = Faker::Lorem.word
 
-    expect { pix_response.payload_in_base64 = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { pix_response.payload_in_base64 = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string or nil image_in_base64" do
@@ -23,6 +23,6 @@ RSpec.describe "JunoRuby PixResponse" do
     pix_response.image_in_base64 = Faker::Lorem.word
     pix_response.image_in_base64 = nil
 
-    expect { pix_response.image_in_base64 = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { pix_response.image_in_base64 = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 end

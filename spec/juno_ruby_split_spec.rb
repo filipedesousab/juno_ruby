@@ -6,14 +6,14 @@ RSpec.describe "JunoRuby Split" do
 
     split.recipient_token = Faker::Lorem.word
 
-    expect { split.recipient_token = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { split.recipient_token = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only integer and float in amount" do
     split = JunoRuby::Split.new
 
-    split.amount = 10
-    split.amount = 0.01
+    split.amount = Random.rand(10)
+    split.amount = Random.rand(10.0)
 
     expect { split.amount = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end
@@ -21,8 +21,8 @@ RSpec.describe "JunoRuby Split" do
   it "must accept only integer and float in percentage" do
     split = JunoRuby::Split.new
 
-    split.percentage = 10
-    split.percentage = 0.01
+    split.percentage = Random.rand(10)
+    split.percentage = Random.rand(10.0)
 
     expect { split.percentage = Faker::Lorem.word }.to raise_error(JunoRuby::Errors::TypeError)
   end

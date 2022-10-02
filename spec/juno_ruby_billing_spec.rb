@@ -6,7 +6,7 @@ RSpec.describe "JunoRuby Billing" do
 
     billing.name = Faker::Lorem.word
 
-    expect { billing.name = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { billing.name = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in document" do
@@ -14,7 +14,7 @@ RSpec.describe "JunoRuby Billing" do
 
     billing.document = Faker::Lorem.word
 
-    expect { billing.document = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { billing.document = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in email" do
@@ -22,7 +22,7 @@ RSpec.describe "JunoRuby Billing" do
 
     billing.email = Faker::Lorem.word
 
-    expect { billing.email = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { billing.email = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in address" do
@@ -31,7 +31,7 @@ RSpec.describe "JunoRuby Billing" do
 
     billing.address = address
 
-    expect { billing.address = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { billing.address = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in secondary_email" do
@@ -39,7 +39,7 @@ RSpec.describe "JunoRuby Billing" do
 
     billing.secondary_email = Faker::Lorem.word
 
-    expect { billing.secondary_email = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { billing.secondary_email = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in phone" do
@@ -47,7 +47,7 @@ RSpec.describe "JunoRuby Billing" do
 
     billing.phone = Faker::Lorem.word
 
-    expect { billing.phone = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { billing.phone = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only string in birth_date" do
@@ -55,7 +55,7 @@ RSpec.describe "JunoRuby Billing" do
 
     billing.birth_date = Faker::Lorem.word
 
-    expect { billing.birth_date = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { billing.birth_date = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only boolean in notify" do
@@ -64,7 +64,7 @@ RSpec.describe "JunoRuby Billing" do
     billing.notify = true
     billing.notify = false
 
-    expect { billing.notify = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { billing.notify = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must accept only boolean in delayed" do
@@ -73,7 +73,7 @@ RSpec.describe "JunoRuby Billing" do
     billing.delayed = true
     billing.delayed = false
 
-    expect { billing.delayed = 10 }.to raise_error(JunoRuby::Errors::TypeError)
+    expect { billing.delayed = Random.rand(10) }.to raise_error(JunoRuby::Errors::TypeError)
   end
 
   it "must convert to json" do
